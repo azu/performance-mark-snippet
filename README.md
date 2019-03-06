@@ -24,9 +24,6 @@ const mark = (name) => {
             map.set(name + "::" + currentId, details);
             window.__performance_mark_snippet_map = map;
         }
-        performance.clearMarks(name + "::start" + currentId);
-        performance.clearMarks(name + "::end" + currentId);
-        performance.clearMeasures(name + "::" + currentId);
     }
 }
 
@@ -36,6 +33,14 @@ const markEnd = mark("item name");
 // ...Do something to measure...    
 // ...
 markEnd({ key : "value" });
+```
+
+Collect results snippet:
+
+```js
+console.table(Array.from(performance.getEntries()).filter(entry => entry.entryType === "measure").map(entry => {
+  return { name: entry.name, "duration(ms)": entry.duration, ...window.window.__performance_mark_snippet_map.get(entry.name) };
+}))
 ```
 
 ## Contributing
