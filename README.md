@@ -7,6 +7,10 @@ Minimum `performance.mark` snippet for measure a feature with meta data.
 Start to mark with `name` and return markEnd function that end to mark with details data.
 
 ```js
+/**
+ * start to mark with `name` and return markEnd function that end to mark with details data
+ * @param {string} name 
+ */
 const mark = (name) => {
     const currentId = window.__performance_mark_snippet_id || 0;
     window.__performance_mark_snippet_id = currentId + 1;
