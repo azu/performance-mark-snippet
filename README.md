@@ -10,6 +10,7 @@ Start to mark with `name` and return markEnd function that end to mark with deta
 /**
  * start to mark with `name` and return markEnd function that end to mark with details data
  * @param {string} name 
+ * @returns {Function} markEnd function
  */
 const mark = (name) => {
     const currentId = window.__performance_mark_snippet_id || 0;
